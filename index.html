@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshman Yaganti — Data Scientist | Machine Learning, Predictive Analytics & GenAI</title>
+<meta name="description" content="Data Scientist at MetLife building machine learning, predictive analytics, and GenAI solutions across insurance and banking. Python · SQL · XGBoost · PyTorch · Azure.">
+<style>
+:root{
+  --bg:#04070f; --bg2:#070d1d; --card:rgba(255,255,255,.04); --card-brd:rgba(255,255,255,.09);
+  --txt:#eef2f9; --muted:#9fb0c9; --accent:#22d3ee; --accent2:#818cf8; --accent3:#34d399;
+  --grad:linear-gradient(92deg,#22d3ee 0%,#818cf8 55%,#c084fc 100%);
+  --radius:18px; --maxw:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.65;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+::selection{background:rgba(34,211,238,.35)}
+
+/* ---------- animated backgrounds ---------- */
+#net{position:fixed;inset:0;z-index:0;opacity:.55}
+.orbs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:drift 26s ease-in-out infinite alternate}
+.orb.o1{width:520px;height:520px;background:#0e3a5d;top:-160px;left:-120px}
+.orb.o2{width:460px;height:460px;background:#2b2156;bottom:-180px;right:-100px;animation-delay:-8s}
+.orb.o3{width:300px;height:300px;background:#07332a;top:45%;left:55%;animation-delay:-16s;opacity:.35}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(70px,50px) scale(1.15)}}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 75%)}
+main,footer,header{position:relative;z-index:1}
+
+/* ---------- progress + nav ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60}
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s,box-shadow .35s,backdrop-filter .35s}
+header.scrolled{background:rgba(4,8,18,.82);backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(0,0,0,.45)}
+.nav{max-width:var(--maxw);margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.4px;color:var(--txt);font-size:1.02rem}
+.logo-badge{width:38px;height:38px;border-radius:11px;background:var(--grad);display:grid;place-items:center;font-weight:900;color:#04121f;font-size:.95rem;box-shadow:0 6px 18px rgba(34,211,238,.35)}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{color:var(--muted);font-size:.93rem;font-weight:600;transition:color .25s}
+.nav-links a:hover{color:#fff}
+.btn{display:inline-block;padding:11px 22px;border-radius:999px;font-weight:700;font-size:.93rem;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer;border:0}
+.btn-primary{background:var(--grad);color:#04121f;box-shadow:0 8px 24px rgba(56,130,246,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(56,130,246,.45)}
+.btn-ghost{background:transparent;color:var(--txt);border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.nav .btn{padding:9px 18px}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* ---------- layout / sections ---------- */
+section{padding:104px 24px}
+.wrap{max-width:var(--maxw);margin:0 auto}
+.kicker{text-transform:uppercase;letter-spacing:3.5px;font-size:.74rem;font-weight:800;color:var(--accent);margin-bottom:14px}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.15;font-weight:850;margin-bottom:14px}
+.sub{color:var(--muted);max-width:680px;margin-bottom:44px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- reveal animations ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.65,.25,1),transform .8s cubic-bezier(.2,.65,.25,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:130px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border:1px solid rgba(52,211,153,.45);border-radius:999px;color:#a7f3d0;font-size:.82rem;font-weight:700;background:rgba(52,211,153,.08);margin-bottom:26px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent3);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(2.5rem,6.4vw,4.4rem);line-height:1.05;font-weight:900;letter-spacing:-.5px}
+.hero .role{font-size:clamp(1.15rem,2.6vw,1.6rem);font-weight:750;margin:20px 0 6px;color:#dbe7fa}
+#rotator{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;border-right:3px solid var(--accent);padding-right:6px;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{border-color:transparent}}
+.hero p.lead{color:var(--muted);font-size:1.08rem;max-width:640px;margin:16px 0 32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:820px}
+.stat{background:var(--card);border:1px solid var(--card-brd);border-radius:var(--radius);padding:20px 18px;backdrop-filter:blur(8px);transition:transform .3s,border-color .3s}
+.stat:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.5)}
+.stat .num{font-size:1.72rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{color:var(--muted);font-size:.83rem;margin-top:2px}
+
+/* ---------- marquee ---------- */
+.marquee-band{border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);padding:18px 0;overflow:hidden;position:relative;z-index:1}
+.marquee{display:flex;gap:0;width:max-content;animation:scrollX 30s linear infinite}
+.marquee span{padding:0 26px;color:#c6d4ec;font-weight:700;letter-spacing:1.6px;font-size:.85rem;text-transform:uppercase;white-space:nowrap}
+.marquee i{color:var(--accent);font-style:normal}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:44px;align-items:start}
+.about-grid p{color:var(--muted);margin-bottom:16px}
+.about-grid p strong{color:var(--txt)}
+.num-cards{display:grid;gap:14px}
+.num-card{background:var(--card);border:1px solid var(--card-brd);border-left:3px solid var(--accent);border-radius:14px;padding:18px 20px;transition:transform .3s,background .3s}
+.num-card:hover{transform:translateX(6px);background:rgba(255,255,255,.06)}
+.num-card b{display:block;font-size:1.05rem}
+.num-card span{color:var(--muted);font-size:.9rem}
+
+/* ---------- cards (services + projects) ---------- */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--card-brd);border-radius:var(--radius);padding:28px;backdrop-filter:blur(8px);position:relative;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s;transform-style:preserve-3d;will-change:transform}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(34,211,238,.13),transparent 45%);opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover{border-color:rgba(34,211,238,.45);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.card:hover::before{opacity:1}
+.card .icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(34,211,238,.18),rgba(129,140,248,.18));border:1px solid rgba(255,255,255,.12);display:grid;place-items:center;margin-bottom:18px}
+.card .icon svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.16rem;margin-bottom:9px}
+.card p{color:var(--muted);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 18px}
+.chip{font-size:.76rem;font-weight:700;padding:5px 11px;border-radius:999px;background:rgba(129,140,248,.13);border:1px solid rgba(129,140,248,.35);color:#c7d2fe}
+.chip b{color:#fff}
+.card .gh{font-weight:750;font-size:.92rem;display:inline-flex;align-items:center;gap:7px}
+.card .gh:hover{text-decoration:underline}
+.center-cta{text-align:center;margin-top:38px}
+
+/* ---------- impact band ---------- */
+.impact{background:linear-gradient(180deg,rgba(34,211,238,.06),rgba(129,140,248,.05));border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.impact-item{text-align:center;padding:26px 14px}
+.impact-item .big{font-size:2.1rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.impact-item .cap{color:var(--muted);font-size:.9rem;margin-top:4px}
+
+/* ---------- timeline ---------- */
+.timeline{position:relative;margin-left:8px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent2),transparent)}
+.tl-item{position:relative;margin-bottom:44px}
+.tl-item::before{content:"";position:absolute;left:-33px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent);box-shadow:0 0 0 5px rgba(34,211,238,.15)}
+.tl-item h3{font-size:1.25rem}
+.tl-item .meta{color:var(--accent);font-weight:700;font-size:.9rem;margin:3px 0 12px}
+.tl-item ul{list-style:none}
+.tl-item li{color:var(--muted);padding-left:20px;position:relative;margin-bottom:7px;font-size:.97rem}
+.tl-item li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+
+/* ---------- skills ---------- */
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.skill-card{background:var(--card);border:1px solid var(--card-brd);border-radius:var(--radius);padding:26px}
+.skill-card h3{margin-bottom:14px;font-size:1.05rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:.83rem;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#d5e0f2;transition:all .25s}
+.tag:hover{border-color:var(--accent);color:#fff;transform:translateY(-2px)}
+
+/* ---------- education + contact ---------- */
+.edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.contact-box{background:linear-gradient(135deg,rgba(34,211,238,.09),rgba(129,140,248,.09));border:1px solid rgba(255,255,255,.13);border-radius:24px;padding:52px 40px;text-align:center;position:relative;overflow:hidden}
+.contact-box h2{margin-bottom:10px}
+.contact-box p{color:var(--muted);max-width:560px;margin:0 auto 30px}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+footer{border-top:1px solid rgba(255,255,255,.07);padding:30px 24px;text-align:center;color:var(--muted);font-size:.88rem}
+#toTop{position:fixed;right:22px;bottom:22px;z-index:55;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(10,17,35,.85);color:#fff;font-size:1.15rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;backdrop-filter:blur(8px)}
+#toTop.show{opacity:1;pointer-events:auto}
+#toTop:hover{transform:translateY(-3px);border-color:var(--accent)}
+
+@media(max-width:900px){
+  .cards,.cards3,.skill-grid,.edu-grid,.impact-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none;position:absolute;top:70px;right:16px;flex-direction:column;background:rgba(6,11,24,.97);border:1px solid var(--card-brd);border-radius:14px;padding:18px 22px;gap:16px;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .burger{display:block}
+  section{padding:78px 20px}
+}
+</style>
+</head>
+<body>
+<canvas id="net"></canvas>
+<div class="orbs"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+<div class="grid-overlay"></div>
+<div id="progress"></div>
+
+<header id="header">
+  <nav class="nav">
+    <a class="logo" href="#top"><span class="logo-badge">LY</span> Lakshman&nbsp;Yaganti</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a>
+      <a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a>
+      <a class="btn btn-primary" href="#contact">Contact Me</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-badge reveal in"><span class="dot"></span> Open to Data Scientist opportunities</div>
+    <h1 class="reveal in">Lakshman Yaganti</h1>
+    <div class="role reveal in">Data Scientist @ MetLife — <span id="rotator">Machine Learning</span></div>
+    <p class="lead reveal in">I turn messy insurance and banking data into models people trust — predictive risk scoring, fraud detection, recommenders, and grounded GenAI assistants. Four years of work, measured in outcomes.</p>
+    <div class="hero-ctas reveal in">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-ghost" href="https://github.com/LakshmanYaganti" target="_blank" rel="noopener">GitHub Profile</a>
+      <a class="btn btn-ghost" href="#contact">Contact Me</a>
+    </div>
+    <div class="stats">
+      <div class="stat reveal in"><div class="num"><span class="count" data-to="4" data-suffix="+">0</span></div><div class="lbl">Years of experience</div></div>
+      <div class="stat reveal in d1"><div class="num"><span class="count" data-to="18" data-prefix="+" data-suffix="%">0</span></div><div class="lbl">Claims review precision</div></div>
+      <div class="stat reveal in d2"><div class="num"><span class="count" data-to="32" data-prefix="−" data-suffix="%">0</span></div><div class="lbl">Policy lookup time with RAG</div></div>
+      <div class="stat reveal in d3"><div class="num"><span class="count" data-to="55" data-prefix="−" data-suffix="%">0</span></div><div class="lbl">Reporting turnaround</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee" id="marquee">
+    <span>Python <i>✦</i></span><span>SQL <i>✦</i></span><span>PySpark <i>✦</i></span><span>XGBoost <i>✦</i></span><span>LightGBM <i>✦</i></span><span>PyTorch <i>✦</i></span><span>Azure OpenAI <i>✦</i></span><span>RAG <i>✦</i></span><span>LangGraph <i>✦</i></span><span>Databricks <i>✦</i></span><span>MLflow <i>✦</i></span><span>SHAP <i>✦</i></span><span>FastAPI <i>✦</i></span><span>Airflow <i>✦</i></span>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="kicker reveal">01 // About</div>
+    <h2 class="reveal">Models people <span class="grad-text">trust</span></h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I'm a <strong>Data Scientist</strong> with <strong>4 years</strong> of experience in machine learning, predictive analytics, statistical modeling, and financial data analysis across <strong>insurance and banking</strong> domains.</p>
+        <p>At <strong>MetLife</strong>, I own claims and benefits analytics on Databricks and Delta Lake, compare XGBoost and LightGBM with MLflow and SHAP, evaluate Azure OpenAI RAG assistants for insurance documents, and monitor models for drift and fairness with compliance teams.</p>
+        <p>Before that, at <strong>Virtusa</strong>, I built fraud-detection models over banking transactions, explained predictions with SHAP for investigators, reconciled 400K payment records, and automated exception reporting end to end.</p>
+        <p>Every project on this page is open source — real data, real measured metrics, nothing inflated.</p>
+      </div>
+      <div class="num-cards">
+        <div class="num-card reveal"><b>1.2M claims · 850K interactions</b><span>Prepared on Databricks/Delta Lake for reliable predictive modeling at MetLife</span></div>
+        <div class="num-card reveal d1"><b>+18% claims review precision</b><span>XGBoost vs LightGBM with MLflow, SHAP & time-based validation</span></div>
+        <div class="num-card reveal d2"><b>78% fraud detection sensitivity</b><span>Chronological validation, class weighting & threshold tuning on banking transactions</span></div>
+        <div class="num-card reveal d3"><b>−32% policy lookup time</b><span>Azure OpenAI + LangGraph RAG document assistant, evaluated with Ragas</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="kicker reveal">02 // Services</div>
+    <h2 class="reveal">What I <span class="grad-text">do</span></h2>
+    <p class="sub reveal">Data-science work for insurance, banking, and risk teams — predictive models, GenAI systems, and the evaluation rigor that makes both trustworthy.</p>
+    <div class="cards">
+      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 20v-7m4 7V9m4 11v-10m4 10V6"/></svg></div>
+        <h3>Predictive Modeling & Risk Analytics</h3><p>Claims, risk, and engagement models with XGBoost, LightGBM, and logistic regression — feature engineering, time-based validation, calibration, and threshold selection tied to business outcomes.</p></div>
+      <div class="card reveal d1"><div class="icon"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 1 1-3.2-6.4L21 5l-.8 3.2c.5 1.2.8 2.4.8 3.8z"/><path d="M8.5 11h7M8.5 14h4"/></svg></div>
+        <h3>Generative AI & RAG</h3><p>Grounded document assistants with Azure OpenAI, LangGraph, and Azure AI Search — evaluated with Ragas for answer quality, and monitored like any other production model.</p></div>
+      <div class="card reveal d2"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Fraud Detection & Banking Analytics</h3><p>Behavioral risk features and fraud classifiers on transaction data — chronological validation, class weighting, SHAP explanations investigators can act on, and reconciliation at scale.</p></div>
+      <div class="card reveal d3"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15v-4m4 4V8m4 7v-6"/></svg></div>
+        <h3>Experimentation & Model Monitoring</h3><p>A/B tests with NDCG@K, conversion metrics, and significance testing — plus MLflow/Evidently monitoring for drift, fairness, and errors, with retraining recommendations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="kicker reveal">03 // Selected Work</div>
+    <h2 class="reveal">Featured <span class="grad-text">projects</span></h2>
+    <p class="sub reveal">Open-source builds with executed code, automated tests, and measured results. Hover a card — then read the code.</p>
+<div class="cards3">
+      <div class="card tilt reveal"><h3>Fraud Detection ML</h3><p>XGBoost fraud detection on 284,807 real credit-card transactions (0.17% fraud) with SHAP explanations and a FastAPI scoring API.</p>
+        <div class="chips"><span class="chip">PR-AUC <b>0.84</b></span><span class="chip">Precision <b>0.90</b></span><span class="chip">12 tests</span></div>
+        <a class="gh" href="https://github.com/LakshmanYaganti/fraud-detection-ml" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card tilt reveal d1"><h3>Seller Credit Risk Analytics</h3><p>Credit-risk features — cash-flow consistency, payment history, repayment behavior — across 500K seller-months, with risk tiers and eligibility decisioning.</p>
+        <div class="chips"><span class="chip">Tier defaults <b>1.3% → 22%</b></span><span class="chip">ROC-AUC <b>0.80</b></span><span class="chip">19 tests</span></div>
+        <a class="gh" href="https://github.com/LakshmanYaganti/seller-credit-risk-analytics" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card tilt reveal d2"><h3>Real-Time Risk Scoring</h3><p>Kafka streaming pipeline: transaction enrichment with velocity features, XGBoost scoring, and routing to investigation queues.</p>
+        <div class="chips"><span class="chip"><b>2.6 ms</b> / event</span><span class="chip">SLA <b>5 min</b></span><span class="chip">25 tests</span></div>
+        <a class="gh" href="https://github.com/LakshmanYaganti/realtime-transaction-risk-scoring" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card tilt reveal"><h3>Credit Risk Scorecard</h3><p>WOE/IV points scorecard the way banks build it — matches an XGBoost benchmark, with adverse-action reason codes and a scoring API.</p>
+        <div class="chips"><span class="chip">AUC <b>0.80</b></span><span class="chip">KS <b>0.49</b></span><span class="chip">11 tests</span></div>
+        <a class="gh" href="https://github.com/LakshmanYaganti/credit-risk-scorecard" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card tilt reveal d1"><h3>Payment Investigation NLP</h3><p>Intent classification across all 77 BANKING77 payment intents with sentence-transformer embeddings, plus regex entity extraction.</p>
+        <div class="chips"><span class="chip">Accuracy <b>93%</b></span><span class="chip">Macro-F1 <b>0.93</b></span><span class="chip">9 tests</span></div>
+        <a class="gh" href="https://github.com/LakshmanYaganti/payment-investigation-nlp" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card tilt reveal d2"><h3>A/B Testing & Experimentation</h3><p>An experiment analyzed end-to-end: frequentist + Bayesian readouts, CUPED, SRM check, Type-I error audit, and a ship decision memo.</p>
+        <div class="chips"><span class="chip">Lift <b>+1.53pp</b></span><span class="chip">P(B&gt;A) <b>1.0</b></span><span class="chip">14 tests</span></div>
+        <a class="gh" href="https://github.com/LakshmanYaganti/ab-testing-experimentation" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card tilt reveal d2"><h3>ScamShield — Live App</h3><p>Paste a suspicious text, email or link and get an explainable 0–100 risk score with every red flag named in plain English. Runs entirely in your browser — nothing you check is stored or sent anywhere.</p>
+        <div class="chips"><span class="chip">Live demo</span><span class="chip">17 tests</span><span class="chip">In-browser</span></div>
+        <a class="gh" href="https://lakshmanyaganti.github.io/scam-shield/" target="_blank" rel="noopener">Try the live app →</a> · <a class="gh" href="https://github.com/LakshmanYaganti/scam-shield" target="_blank" rel="noopener">View on GitHub →</a></div>
+
+    </div>
+    <div class="center-cta reveal"><a class="btn btn-ghost" href="https://github.com/LakshmanYaganti" target="_blank" rel="noopener">All 13 projects on GitHub →</a></div>
+  </div>
+</section>
+
+<!-- ================= IMPACT ================= -->
+<section class="impact">
+  <div class="wrap">
+    <div class="impact-grid">
+      <div class="impact-item reveal"><div class="big">+18%</div><div class="cap">Claims review precision — XGBoost/LightGBM at MetLife</div></div>
+      <div class="impact-item reveal d1"><div class="big">1.2M</div><div class="cap">Claims prepared for predictive modeling</div></div>
+      <div class="impact-item reveal d2"><div class="big">78%</div><div class="cap">Fraud detection sensitivity on banking transactions</div></div>
+      <div class="impact-item reveal"><div class="big">−32%</div><div class="cap">Analyst policy lookup time with RAG</div></div>
+      <div class="impact-item reveal d1"><div class="big">+21%</div><div class="cap">Recommendation relevance vs baseline (PyTorch + A/B tests)</div></div>
+      <div class="impact-item reveal d2"><div class="big">−55%</div><div class="cap">Exception reporting turnaround time</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="wrap">
+    <div class="kicker reveal">04 // Experience</div>
+    <h2 class="reveal">Where I've <span class="grad-text">shipped</span></h2>
+    <p class="sub reveal"></p>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <h3>Data Scientist — MetLife</h3>
+        <div class="meta">FEB 2025 — PRESENT · UNITED STATES</div>
+        <ul>
+          <li>Own claims and benefits analytics using Python, SQL, PySpark, Databricks, and Delta Lake — 1.2M claims and 850K interactions prepared for predictive modeling and reporting</li>
+          <li>Engineer risk and engagement features, defining claims review priorities and enrollment dropoff metrics with business stakeholders</li>
+          <li>Compare XGBoost and LightGBM against logistic regression using MLflow, SHAP, and time-based validation — +18% historical claims review precision</li>
+          <li>Evaluate insurance document assistance using Azure OpenAI, LangGraph, Azure AI Search, and Ragas — 32% faster analyst policy lookup during testing</li>
+          <li>Develop PyTorch recommendation models and design A/B tests using NDCG@5 and conversion metrics — +21% measured recommendation relevance</li>
+          <li>Monitor predictive models and RAG workflows using MLflow and Evidently — drift, fairness, and errors investigated with compliance teams</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <h3>Data Scientist — Virtusa</h3>
+        <div class="meta">JUN 2020 — JUL 2023 · INDIA</div>
+        <ul>
+          <li>Prepared 250K banking transactions using Python, SQL, Pandas, and NumPy — resolving duplicates and standardizing payment fields for fraud model development</li>
+          <li>Engineered behavioral risk features with banking analysts from transaction frequency, amounts, and account activity</li>
+          <li>Compared Logistic Regression, Random Forest, and XGBoost — 78% fraud detection sensitivity via chronological validation, class weighting, and threshold tuning</li>
+          <li>Explained fraud predictions using SHAP and confusion matrices, presenting risk patterns through Power BI dashboards for investigators</li>
+          <li>Reconciled 400K payment and settlement records using SQL Server, Python, and AWS S3 — transaction matching, duplicate checks, exception rules</li>
+          <li>Automated exception reporting using AWS Glue, Airflow, Flask, and Power BI — 55% faster reporting turnaround</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="kicker reveal">05 // Capabilities</div>
+    <h2 class="reveal">The <span class="grad-text">toolkit</span></h2>
+    <p class="sub reveal"></p>
+    <div class="skill-grid">
+      <div class="skill-card reveal"><h3>Programming & Data</h3><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">PySpark</span><span class="tag">Data Cleaning</span><span class="tag">EDA</span><span class="tag">Feature Engineering</span></div></div>
+      <div class="skill-card reveal d1"><h3>Machine Learning & Statistics</h3><div class="tags"><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">PyTorch</span><span class="tag">Predictive Modeling</span><span class="tag">A/B Testing</span><span class="tag">Hypothesis Testing</span><span class="tag">Model Calibration</span><span class="tag">PR-AUC</span><span class="tag">NDCG@K</span></div></div>
+      <div class="skill-card reveal d2"><h3>Generative AI & NLP</h3><div class="tags"><span class="tag">Azure OpenAI</span><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">Azure AI Search</span><span class="tag">Embeddings</span><span class="tag">Prompt Engineering</span></div></div>
+      <div class="skill-card reveal d3"><h3>Cloud, MLOps & Responsible AI</h3><div class="tags"><span class="tag">Microsoft Azure</span><span class="tag">AWS</span><span class="tag">Azure Databricks</span><span class="tag">Delta Lake</span><span class="tag">MLflow</span><span class="tag">Evidently AI</span><span class="tag">Ragas</span><span class="tag">SHAP</span><span class="tag">Model Governance</span><span class="tag">Docker</span><span class="tag">FastAPI</span><span class="tag">Power BI</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <div class="wrap">
+    <div class="kicker reveal">06 // Education</div>
+    <h2 class="reveal">Where I <span class="grad-text">learned</span></h2>
+    <p class="sub reveal"></p>
+    <div class="edu-grid">
+      <div class="card reveal"><h3>Arizona State University</h3><p><b style="color:#dbe7fa">M.S., Information Technology</b><br>2025 · Arizona, USA<br>Graduate coursework in data science, machine learning, and analytics engineering.</p></div>
+      <div class="card reveal d1"><h3>Koneru Lakshmaiah Foundation</h3><p><b style="color:#dbe7fa">B.Tech, Computer Science</b><br>2022 · India<br>Foundations in algorithms, databases, statistics, and software engineering.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div class="kicker">07 // Contact</div>
+      <h2>Let's build something <span class="grad-text">measurable</span></h2>
+      <p>Open to Data Scientist opportunities. Arizona, USA — remote or hybrid. I read everything.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:lakshmannsy940@gmail.com">✉ lakshmannsy940@gmail.com</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/y-lakshman/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/LakshmanYaganti" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> Lakshman Yaganti — Data Scientist · Arizona, USA · Built with real metrics only</footer>
+<button id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+// duplicate marquee for seamless loop
+const mq = document.getElementById('marquee'); mq.innerHTML += mq.innerHTML;
+
+// scroll progress + header state + back-to-top
+const header = document.getElementById('header'), prog = document.getElementById('progress'), toTop = document.getElementById('toTop');
+addEventListener('scroll', () => {
+  const st = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+  prog.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+  header.classList.toggle('scrolled', st > 30);
+  toTop.classList.toggle('show', st > 600);
+}, {passive:true});
+toTop.onclick = () => scrollTo({top:0, behavior:'smooth'});
+
+// mobile nav
+const burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
+burger.onclick = () => navLinks.classList.toggle('open');
+navLinks.querySelectorAll('a').forEach(a => a.onclick = () => navLinks.classList.remove('open'));
+
+// rotating role words (type / pause / delete)
+const words = ['Machine Learning','Predictive Analytics','Generative AI','Risk Analytics','Experimentation'];
+const rot = document.getElementById('rotator');
+let wi = 0, ci = words[0].length, phase = 'pause';
+function tickRot() {
+  const w = words[wi];
+  if (phase === 'pause') { phase = 'del'; return setTimeout(tickRot, 1700); }
+  if (phase === 'del') {
+    ci--;
+    if (ci <= 0) { ci = 0; wi = (wi + 1) % words.length; phase = 'type'; }
+    rot.textContent = words[wi].slice(0, ci);
+    return setTimeout(tickRot, 42);
+  }
+  ci++;
+  rot.textContent = words[wi].slice(0, ci);
+  if (ci >= words[wi].length) { phase = 'pause'; return setTimeout(tickRot, 60); }
+  setTimeout(tickRot, 68);
+}
+setTimeout(tickRot, 1200);
+
+// reveal on scroll
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold: .12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// animated counters
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; cio.unobserve(e.target);
+  const el = e.target, to = +el.dataset.to, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+  const t0 = performance.now(), dur = 1400;
+  (function tick(t) {
+    const p = Math.min((t - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = pre + Math.round(to * ease) + suf;
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}), {threshold: .5});
+document.querySelectorAll('.count').forEach(el => cio.observe(el));
+
+// card tilt + spotlight tracking
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    card.style.setProperty('--mx', (x / r.width * 100) + '%');
+    card.style.setProperty('--my', (y / r.height * 100) + '%');
+    if (card.classList.contains('tilt')) {
+      const rx = ((y / r.height) - .5) * -6, ry = ((x / r.width) - .5) * 6;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+    }
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+// particle network background
+const cv = document.getElementById('net'), cx = cv.getContext('2d');
+let W, H, pts = [];
+function resize() {
+  W = cv.width = innerWidth; H = cv.height = innerHeight;
+  const n = Math.min(90, Math.floor(W * H / 22000));
+  pts = Array.from({length: n}, () => ({x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, r: Math.random() * 1.6 + .4}));
+}
+resize(); addEventListener('resize', resize);
+(function loop() {
+  cx.clearRect(0, 0, W, H);
+  for (const p of pts) {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1;
+    cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 7); cx.fillStyle = 'rgba(125,211,252,.7)'; cx.fill();
+  }
+  for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+    const a = pts[i], b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+    if (d < 130) { cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.strokeStyle = `rgba(99,160,255,${(1 - d / 130) * .16})`; cx.stroke(); }
+  }
+  requestAnimationFrame(loop);
+})();
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
