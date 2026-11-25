@@ -1,7 +1,8 @@
 # Lakshman Yaganti — Portfolio
 
-Personal portfolio website, published with GitHub Pages at https://lakshmanyaganti.github.io/portfolio/
+Personal portfolio website (light editorial template), built from a single self-contained `index.html`.
 
-Single self-contained `index.html` — animated particle-network background, scroll reveals, animated counters, typing role rotator, and 7 featured projects with verified metrics only.
+Deployed on Vercel: https://lakshman-yaganti.vercel.app
+Also mirrored on GitHub Pages: https://lakshmanyaganti.github.io/portfolio/
 
-Data Scientist @ MetLife — Machine Learning, Predictive Analytics & Generative AI.
+Data Scientist @ MetLife — Machine Learning, Predictive Analytics & Generative AI. Verified metrics only.
